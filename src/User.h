@@ -5,10 +5,10 @@
 class User
 {
 	private:
-		unsigned int id;
-		std::string username;
-		unsigned int age;
-		DevicesList* deviceList;
+		unsigned int _id;
+		std::string _username;
+		unsigned int _age;
+		DevicesList* _deviceList;
 	public:
 		void init(unsigned int id, std::string username, unsigned int age);
 		void clear();

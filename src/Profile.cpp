@@ -2,30 +2,30 @@
 
 void Profile::init(User owner)
 {
-	this->owner = owner;
-	this->page = new Page();
-	this->friends = new UserList();
+	this->_owner = owner;
+	this->_page = new Page();
+	this->_friends = new UserList();
 }
 void Profile::clear()
 {
-	friends->clear();
-	delete page;
-	delete friends;
+	_friends->clear();
+	delete _page;
+	delete _friends;
 }
 User Profile::getOwner() const
 {
-	return owner;
+	return _owner;
 }
 std::string Profile::getPage() const
 {
 	std::string out = std::string("******************* \n") + "******************* ";
-	return "Status: " + page->getStatus() + "\n" + out + "\n" + page->getPosts();
+	return "Status: " + _page->getStatus() + "\n" + out + "\n" + _page->getPosts();
 }
 std::string Profile::getFriends() const
 {
-	if (friends->get_first() == nullptr) return "";
+	if (_friends->get_first() == nullptr) return "";
 	std::string stringOfFriends;
-	UserNode* cur = friends->get_first();
+	UserNode* cur = _friends->get_first();
 
 	while (cur != nullptr)
 	{
@@ -37,15 +37,15 @@ std::string Profile::getFriends() const
 }
 std::string Profile::getFriendsWithSameNameLength() const
 {
-	if (friends->get_first() == nullptr) return "";
+	if (_friends->get_first() == nullptr) return "";
 	std::string stringOfFriends;
 	std::string currentFriend;
 	bool first = true;
-	UserNode* cur = friends->get_first();
+	UserNode* cur = _friends->get_first();
 	while (cur != nullptr)
 	{
 		currentFriend = cur->get_data().getUserName();
-		if (owner.getUserName().length() == currentFriend.length())
+		if (_owner.getUserName().length() == currentFriend.length())
 		{
 			if (!first) stringOfFriends += ",";
 			stringOfFriends += currentFriend;
@@ -57,15 +57,15 @@ std::string Profile::getFriendsWithSameNameLength() const
 }
 void Profile::setStatus(std::string new_status)
 {
-	page->setStatus(new_status);
+	_page->setStatus(new_status);
 }
 void Profile::addPostToProfilePage(std::string post)
 {
-	page->addLineToPosts(post);
+	_page->addLineToPosts(post);
 }
 void Profile::addFriend(User friend_to_add)
 {
-	friends->add(friend_to_add);
+	_friends->add(friend_to_add);
 }
 
 

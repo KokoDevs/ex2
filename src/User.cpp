@@ -2,41 +2,41 @@
 
 void User::init(unsigned int id, std::string username, unsigned age)
 {
-	this->id = id;
-	this->username = username;
-	this->age = age;
-	this->deviceList = new DevicesList();
+	this->_id = id;
+	this->_username = username;
+	this->_age = age;
+	this->_deviceList = new DevicesList();
 }
 void User::clear()
 {
-	delete deviceList;
-	deviceList = nullptr;
+	delete _deviceList;
+	_deviceList = nullptr;
 }
 unsigned User::getID() const
 {
-	return id;
+	return _id;
 }
 const std::string& User::getUserName() const
 {
-	return username;
+	return _username;
 }
 unsigned User::getAge() const
 {
-	return age;
+	return _age;
 }
 DevicesList& User::getDevices() const
 {
-	return *deviceList;
+	return *_deviceList;
 }
 void User::addDevice(const Device& device)
 {
-	deviceList->add(device);
+	_deviceList->add(device);
 }
 bool User::checkIfDevicesAreOn() const
 {
-	if (deviceList == nullptr) return false;
+	if (_deviceList == nullptr) return false;
 
-	DeviceNode* checkingNode = deviceList->get_first();
+	DeviceNode* checkingNode = _deviceList->get_first();
 	while (checkingNode != nullptr)
 	{
 		bool active = checkingNode->get_data().isActive();

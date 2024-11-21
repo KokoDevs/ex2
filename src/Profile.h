@@ -6,9 +6,9 @@
 class Profile
 {
 	private:
-		User owner;
-		Page* page;
-		UserList* friends;
+		User _owner;
+		Page* _page;
+		UserList* _friends;
 	public:
 		void init(User owner);
 		void clear();

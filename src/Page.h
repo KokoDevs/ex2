@@ -4,8 +4,8 @@
 class Page
 {
 	private:
-		std::string status;
-		std::string post;
+		std::string _status;
+		std::string _post;
 	public:
 		void init();
 		std::string getPosts() const;
