@@ -6,6 +6,7 @@ void User::init(unsigned int id, std::string username, unsigned age)
 	this->_username = username;
 	this->_age = age;
 	this->_deviceList = new DevicesList();
+	this->_deviceList->init();
 }
 void User::clear()
 {

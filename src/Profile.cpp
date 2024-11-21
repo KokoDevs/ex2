@@ -4,7 +4,9 @@ void Profile::init(User owner)
 {
 	this->_owner = owner;
 	this->_page = new Page();
+	this->_page->init();
 	this->_friends = new UserList();
+	this->_friends->init();
 }
 void Profile::clear()
 {
