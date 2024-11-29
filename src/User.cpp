@@ -35,7 +35,7 @@ void User::addDevice(const Device& device)
 }
 bool User::checkIfDevicesAreOn() const
 {
-	if (_deviceList == nullptr) return false;
+	if (_deviceList == nullptr) return true;
 
 	DeviceNode* checkingNode = _deviceList->get_first();
 	while (checkingNode != nullptr)

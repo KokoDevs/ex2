@@ -22,8 +22,7 @@ void Page::setStatus(std::string status)
 }
 void Page::addLineToPosts(std::string new_line)
 {
-	if (this->_post.empty()) this->_post = this->_post + new_line;
-	else this->_post = this->_post + "\n" + new_line;
+	this->_post += new_line + "\n";
 }
 
 

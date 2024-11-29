@@ -20,7 +20,7 @@ User Profile::getOwner() const
 }
 std::string Profile::getPage() const
 {
-	std::string out = std::string("******************* \n") + "******************* ";
+	std::string out = std::string("*******************\n") + "*******************";
 	return "Status: " + _page->getStatus() + "\n" + out + "\n" + _page->getPosts();
 }
 std::string Profile::getFriends() const
@@ -57,6 +57,7 @@ std::string Profile::getFriendsWithSameNameLength() const
 	}
 	return stringOfFriends;
 }
+
 void Profile::setStatus(std::string new_status)
 {
 	_page->setStatus(new_status);
@@ -70,8 +71,32 @@ void Profile::addFriend(User friend_to_add)
 	_friends->add(friend_to_add);
 }
 
+void Profile::changeWordInStatus(std::string word_to_replace, std::string new_word)
+{
+	std::string editedStatus = _page->getStatus();
+	if (word_to_replace.empty())
+		return;
+	int start_pos = 0;
+	while ((start_pos = editedStatus.find(word_to_replace, start_pos)) != std::string::npos) {
+		editedStatus.replace(start_pos, word_to_replace.length(), new_word);
+		start_pos += new_word.length();
+	}
 
+	_page->setStatus(editedStatus);
+}
 
+void Profile::changeAllWordsInStatus(std::string word)
+{
+	int amountOfWords = 1;
+	for (int i = 0; i < _page->getStatus().size(); i++)
+		if (_page->getStatus()[i] == ' ') amountOfWords++;
 
+	if (amountOfWords == 1) return;
 
+	std::string newStatus = "";
+	for (int i = 0; i < amountOfWords; i++)
+		newStatus += word;
+
+	_page->setStatus(newStatus);
+}
 

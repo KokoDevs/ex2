@@ -19,4 +19,7 @@ class Profile
 		void setStatus(std::string new_status);
 		void addPostToProfilePage(std::string post);
 		void addFriend(User friend_to_add);
+		void changeAllWordsInStatus(std::string word);
+		void changeWordInStatus(std::string word_to_replace,
+			std::string new_word);
 };
